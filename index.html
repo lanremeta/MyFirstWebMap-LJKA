@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+
+    <head>
+        <title>Welcome to my very first HTML webpage </title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    </head>
+	
+    
+	<body>
+	
+	
+	
+		<H1>
+<center>		This is a watercolour map of Ljubljana's city centre <center></H1>
+		<center><div id="ljka" style="width: 1700px; height: 500px"></div><center>
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-hash/0.2.1/leaflet-hash.js"></script>
+		<p> <center> with some of the more imporant places being indicated . <center> </p>
+			<style type="text/css">
+									p {
+										font-family: baskerville-old-face;
+										color:  #66cc00;}
+									H1 {
+										font-family: baskerville-old-face;
+										color: #66cc00;}
+			</style>
+		
+		<script>        
+			const map = L.map('ljka').setView([46.05212037938376, 14.50622878417958], 12);
+
+        
+				const backgroundMap =  L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+						attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+						subdomains: 'abcd',
+						minZoom: 9,
+						maxZoom: 16,
+						ext: 'jpg'
+					
+				}
+				);
+				  
+				 backgroundMap.addTo(map);
+				 
+					var hash = new L.Hash(map);
+						let preserc = L.marker([46.05212037938376, 14.50622878417958]).addTo(map);
+							let popup1 = "Prešernov trg, this is the centre centre of Ljubljana. If you want to meet you meet here";
+							preserc.bindPopup(popup1); 
+						
+						let moderna = L.marker([46.05320757514939, 14.49889476518583]).addTo(map);
+							let popup2 = "Moderna, my favourite place to grab a coffee. Its also a museum of modern art";
+							moderna.bindPopup(popup2); 
+							
+						let romantika = L.marker([46.04928944732176, 14.5047514276678]).addTo(map);
+							let popup3 = "Romantika, the best ice cream in Ljubljana.";
+							romantika.bindPopup(popup3); 
+							
+						let parkic = L.marker([46.04983140460707, 14.512197386101672]).addTo(map);
+							let popup4 = "Parkic. The place where we used to drink beers after high school. Still a nice spot to hang out";
+							parkic.bindPopup(popup4);
+
+						let plaza = L.marker([46.041846155598186, 14.50862962265794]).addTo(map);
+							let popup5 = "Plaža. Chill place by the river Ljubljanica. In the summer it is full of people drinking beers and having fun";
+							plaza.bindPopup(popup5);
+							
+						let poljane = L.marker([46.05025754739991, 14.51391229196342]).addTo(map);
+							let popup6 = "This is my highschool, Gimnazija Poljane";
+							poljane.bindPopup(popup6);
+							
+						let dommama = L.marker([46.07039229038773, 14.490601093814497]).addTo(map);
+							let popup7 = "This is my my mom's place and the start of my morning bike route to school";
+							dommama.bindPopup(popup7);
+							
+						let domtata = L.marker([46.02695409459456, 14.534940430589998]).addTo(map);
+							let popup8 = "This is my my dad's place and the start of my morning bike route to school";
+							domtata.bindPopup(popup7);
+						
+						let circle =  L.circle([46.05212037938376, 14.50622878417958], 1200, {
+							  color: 'white',
+							  fillColor: '#ffffff00.',
+							  fillOpacity: 0.05
+							}).addTo(map);
+							circle.bindPopup("This is the centre of Ljubljana. Living inside the circle means you usually walk evcerywhere you go, while living outside  means you have to commute with your bike. ");
+						
+						var GeoJson = [{
+											  "type": "FeatureCollection",
+											  "features": [
+												{
+												  "type": "Feature",
+												  "properties": {"dom": "Tata"},
+												  "geometry": {
+													"type": "LineString",
+													"coordinates": [
+													  [
+														14.534965753555298,
+														46.02663264022543
+													  ],
+													  [
+														14.534450769424438,
+														46.02702745105732
+													  ],
+													  [
+														14.534453451633452,
+														46.02707121529198
+													  ],
+													  [
+														14.534709602594376,
+														46.027285380195885
+													  ],
+													  [
+														14.525063037872313,
+														46.03351535341572
+													  ],
+													  [
+														14.516158103942871,
+														46.03813314368671
+													  ],
+													  [
+														14.517381191253662,
+														46.03899707449802
+													  ],
+													  [
+														14.515589475631712,
+														46.04103768502038
+													  ],
+													  [
+														14.514698982238768,
+														46.04204306760062
+													  ],
+													  [
+														14.51366901397705,
+														46.04292927855587
+													  ],
+													  [
+														14.51718807220459,
+														46.04455272057458
+													  ],
+													  [
+														14.517590403556826,
+														46.04467931725895
+													  ],
+													  [
+														14.516125917434692,
+														46.04607558497341
+													  ],
+													  [
+														14.515364170074461,
+														46.04663780547341
+													  ],
+													  [
+														14.513813853263855,
+														46.04759096092928
+													  ],
+													  [
+														14.512660503387451,
+														46.04841751211079
+													  ],
+													  [
+														14.513272047042847,
+														46.05011897718303
+													  ],
+													  [
+														14.513572454452515,
+														46.050070577369155
+													  ]
+													]
+												  }
+												}
+											  ]},
+											  {
+      "type": "Feature",
+      "properties": {"dom": "Mama"},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.490124583244322,
+            46.070249621158766
+          ],
+          [
+            14.490054845809937,
+            46.07014169164264
+          ],
+          [
+            14.489926099777222,
+            46.07016588275944
+          ],
+          [
+            14.489837586879728,
+            46.06988861470825
+          ],
+          [
+            14.489665925502775,
+            46.069782545353874
+          ],
+          [
+            14.491991400718687,
+            46.06739500051761
+          ],
+          [
+            14.494013786315918,
+            46.065184149846594
+          ],
+          [
+            14.494619965553282,
+            46.06391491778846
+          ],
+          [
+            14.495580196380615,
+            46.06239254524633
+          ],
+          [
+            14.49815511703491,
+            46.05987625800986
+          ],
+          [
+            14.498247653245928,
+            46.059782267248565
+          ],
+          [
+            14.49775144457817,
+            46.05956450586009
+          ],
+          [
+            14.498809576034546,
+            46.05858456898399
+          ],
+          [
+            14.499233365058897,
+            46.05805597283113
+          ],
+          [
+            14.49968934059143,
+            46.057531094179424
+          ],
+          [
+            14.499737620353697,
+            46.05745292033633
+          ],
+          [
+            14.500236511230467,
+            46.057564597221145
+          ],
+          [
+            14.501314759254456,
+            46.05660044600669
+          ],
+          [
+            14.501604437828064,
+            46.05627285411771
+          ],
+          [
+            14.502312541007996,
+            46.05574423583505
+          ],
+          [
+            14.503433704376219,
+            46.05514860353797
+          ],
+          [
+            14.504377841949463,
+            46.054467341222086
+          ],
+          [
+            14.504635334014893,
+            46.05427747973495
+          ],
+          [
+            14.508138298988342,
+            46.05357386970857
+          ],
+          [
+            14.508014917373657,
+            46.053119682814255
+          ],
+          [
+            14.508079290390015,
+            46.052903756587284
+          ],
+          [
+            14.508513808250425,
+            46.05273622703648
+          ],
+          [
+            14.508900046348572,
+            46.0524086122241
+          ],
+          [
+            14.510241150856016,
+            46.052445841277944
+          ],
+          [
+            14.510380625724792,
+            46.05215917691614
+          ],
+          [
+            14.511174559593202,
+            46.052140562295754
+          ],
+          [
+            14.51189875602722,
+            46.0520735496104
+          ],
+          [
+            14.512816071510317,
+            46.05196558455737
+          ],
+          [
+            14.513867497444151,
+            46.05182038984299
+          ],
+          [
+            14.51393723487854,
+            46.05179432921281
+          ],
+          [
+            14.513734728097916,
+            46.05139969531014
+          ],
+          [
+            14.51355904340744,
+            46.050945490535604
+          ],
+          [
+            14.513470530509947,
+            46.0507128022165
+          ],
+          [
+            14.513347148895264,
+            46.05067743350618
+          ],
+          [
+            14.51330691576004,
+            46.050498728097104
+          ],
+          [
+            14.513403475284576,
+            46.05048197443537
+          ],
+          [
+            14.513269364833834,
+            46.05012270024388
+          ],
+          [
+            14.513569772243498,
+            46.050070577369155
+          ]
+        ]
+      }
+    }
+  ];
+
+																					  
+								
+L.geoJSON(GeoJson, {style: function(feature) {  switch (feature.properties.dom) {
+            case 'Mama': return {color: "#ff0099", weight: "3"};
+            case 'Tata': return {color: "#ff00ff", weight: "3"};
+        }
+    }
+}).addTo(map);
+GeoJson.bindPopup("This was my bike route to highschool ");
+											
+											
+										
+												
+											
+
+
+
+											
+										
+										
+									
+
+		</script>
+    </body>
+	
+</html>
